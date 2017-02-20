@@ -1,3 +1,9 @@
 #!/bin/bash
 
-/git-daemon.sh
+if [ ! -e /bootstrap.lock ]; then
+  /git-daemon.sh
+
+  touch /bootstrap.lock
+fi
+
+/usr/bin/supervisord -n
