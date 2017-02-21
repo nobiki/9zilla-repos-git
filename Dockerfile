@@ -1,10 +1,10 @@
 FROM debian:jessie
 MAINTAINER Naoaki Obiki
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git supervisor
 ARG username="git"
 RUN groupadd $username && useradd -g $username -d /home/$username $username
 RUN mkdir /home/$username
-RUN apt-get update && apt-get install -y git-core supervisor
+RUN apt-get update && apt-get install -y git-core
 ADD settings/git-daemon/.gitconfig /home/$username
 ADD settings/supervisor/conf.d/git-daemon.conf /git-daemon.conf.org
 RUN chown -R $username:$username /home/$username
