@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -e /bootstrap.lock ]; then
-  /git-daemon.sh
+  mv /git-daemon.conf.org /etc/supervisor/conf.d/git-daemon.conf
 
   touch /bootstrap.lock
 fi
